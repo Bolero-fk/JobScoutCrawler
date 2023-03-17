@@ -22,7 +22,7 @@ class PaizaScautCrawler:
             browser.quit()
 
         return scauts
-
+    
     def initialize_browser(self):
         options = webdriver.ChromeOptions()
         options.add_argument('--no-sandbox')
@@ -69,8 +69,9 @@ class PaizaScautCrawler:
 
         scaut_cards = scrollable_form.find_elements(By.CLASS_NAME, "MessageCard")
 
+        # 無限ループを防ぐために最大ループ数を決めておく
         loop_count = 0
-        loop_max = 1000
+        loop_max = 30
 
         # スクロール可能な要素を最下部までスクロールする
         while len(scaut_cards) != sum_message_num and loop_count < loop_max:
@@ -84,6 +85,7 @@ class PaizaScautCrawler:
             # スクロールした後に読み込みが完了するまで少し待つ
             time.sleep(1)
 
+            print(sum_message_num, "件中", len(scaut_cards), "件取得")
             scaut_cards = scrollable_form.find_elements(By.CLASS_NAME, "MessageCard")
 
             loop_count += 1

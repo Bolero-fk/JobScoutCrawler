@@ -29,7 +29,7 @@ class Account:
             json.dump(login_info, f)
 
     def load_account_from_json(self, site_name):
-        # ファイルからJSONデータを読み込み
+        # ファイルからJSONデータを読み込む
         with open(self.ACCOUNT_PATH, 'r') as f:
             login_info = json.load(f)
 
