@@ -51,6 +51,7 @@ class PaizaScautCrawler:
         # ログインボタンをクリック
         browser.find_element('css selector', 'input[type="submit"]').click()
 
+        # ログイン処理を待つ
         time.sleep(2)
     
     def fetch_scauts(self, browser):
@@ -85,8 +86,8 @@ class PaizaScautCrawler:
             # スクロールした後に読み込みが完了するまで少し待つ
             time.sleep(1)
 
-            print(sum_message_num, "件中", len(scaut_cards), "件取得")
             scaut_cards = scrollable_form.find_elements(By.CLASS_NAME, "MessageCard")
+            print(sum_message_num, "件中", len(scaut_cards), "件取得")
 
             loop_count += 1
 
