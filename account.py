@@ -11,15 +11,17 @@ class Account:
     def __init__(self, site_name):
         self.EMAIL, self.PASSWARD = self.get_account(site_name)
     
-    def get_login_info(self):
+    def get_login_info(self, site_name):
+        
         # ユーザーからの入力を受け付ける
+        print(site_name, "へのログイン情報を入力してください")
         email = input("メールアドレスを入力してください: ")
         password =  getpass.getpass("パスワードを入力してください: ")
 
         return email, password
 
     def save_login_info(self, site_name, append_mode = True):
-        email, password = self.get_login_info()
+        email, password = self.get_login_info(site_name)
         
         # 入力されたデータを辞書に格納
         login_info = {
