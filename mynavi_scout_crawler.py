@@ -6,25 +6,25 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
-from mynavi_scaut_parser import MynaviScautParser
+from mynavi_scout_parser import MynaviScoutParser
 from account import Account
 
-class MynaviScautCrawler:
+class MynaviScoutCrawler:
     LOGIN_URL = "https://mynavi-job20s.jp/mypage/auth/login"
-    MAX_FETCH_SCAUT_NUM = 50
+    MAX_FETCH_SCOUT_NUM = 50
     WAIT_TIME = 2
     IMPLICITLY_WAIT_TIME = 10
 
     def __init__(self):
         pass
 
-    def get_scauts(self):
+    def get_scouts(self):
         browser = self.initialize_browser()
-        scauts = []
+        scouts = []
         try:
             print("マイナビからのスカウトを取得します")
             self.login(browser)
-            scauts = self.get_scaut_cards(browser)
+            scouts = self.get_scout_cards(browser)
             print("マイナビからのスカウトを取得しました")
         except Exception:
             print("マイナビからのスカウトの取得に失敗しました")
@@ -33,7 +33,7 @@ class MynaviScautCrawler:
         finally:
             browser.quit()
 
-        return [MynaviScautParser.parse_scaut(scaut) for scaut in scauts]
+        return [MynaviScoutParser.parse_scout(scout) for scout in scouts]
     
     def initialize_browser(self):
         options = webdriver.ChromeOptions()
@@ -71,21 +71,21 @@ class MynaviScautCrawler:
 
         time.sleep(self.WAIT_TIME)
     
-    def get_scaut_cards(self, browser):
+    def get_scout_cards(self, browser):
 
-        manual_scaut_cards = self.fetch_scaut_cards(browser, "scout_job_list")
-        ai_scaut_cards = self.fetch_scaut_cards(browser, "ai_job_list")
+        manual_scout_cards = self.fetch_scout_cards(browser, "scout_job_list")
+        ai_scout_cards = self.fetch_scout_cards(browser, "ai_job_list")
 
-        return manual_scaut_cards + ai_scaut_cards
+        return manual_scout_cards + ai_scout_cards
 
-    def fetch_scaut_cards(self, browser, section_id):
+    def fetch_scout_cards(self, browser, section_id):
 
-        scaut_cards = WebDriverWait(browser, self.IMPLICITLY_WAIT_TIME).until(
+        scout_cards = WebDriverWait(browser, self.IMPLICITLY_WAIT_TIME).until(
             EC.presence_of_element_located((By.ID, section_id))
         ).find_elements(By.CLASS_NAME, "job_offer")
 
         # スカウト数が最大値を超える場合、超過分だけ後ろから削除する
-        if len(scaut_cards) > self.MAX_FETCH_SCAUT_NUM:
-            scaut_cards = scaut_cards[:self.MAX_FETCH_SCAUT_NUM]
+        if len(scout_cards) > self.MAX_FETCH_SCOUT_NUM:
+            scout_cards = scout_cards[:self.MAX_FETCH_SCOUT_NUM]
 
-        return [card.get_attribute('innerHTML') for card in scaut_cards]
+        return [card.get_attribute('innerHTML') for card in scout_cards]

@@ -6,10 +6,10 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
-from paiza_scaut_parser import PaizaScautParser
+from paiza_scout_parser import PaizaScoutParser
 from account import Account
 
-class PaizaScautCrawler:
+class PaizaScoutCrawler:
     LOGIN_URL = "https://paiza.jp/sign_in"
     MESSAGE_URL = "https://paiza.jp/messages"
     SCROLL_AMOUNT = 1000
@@ -20,12 +20,12 @@ class PaizaScautCrawler:
     def __init__(self):
         pass
 
-    def get_scauts(self):
+    def get_scouts(self):
         browser = self.initialize_browser()
         try:
             print("Paizaからのスカウトを取得します")
             self.login(browser)
-            scauts = self.fetch_scauts(browser)
+            scouts = self.fetch_scouts(browser)
             print("Paizaからのスカウトを取得しました")
         except Exception:
             print("Paizaからのスカウトの取得に失敗しました")
@@ -33,7 +33,7 @@ class PaizaScautCrawler:
         finally:
             browser.quit()
 
-        return [PaizaScautParser.parse_scaut(scaut) for scaut in scauts]
+        return [PaizaScoutParser.parse_scout(scout) for scout in scouts]
     
     def initialize_browser(self):
         options = webdriver.ChromeOptions()
@@ -71,7 +71,7 @@ class PaizaScautCrawler:
         # ログイン処理を待つ
         time.sleep(self.WAIT_TIME)
     
-    def fetch_scauts(self, browser):
+    def fetch_scouts(self, browser):
 
         browser.get(self.MESSAGE_URL)
         time.sleep(self.WAIT_TIME)
@@ -82,13 +82,13 @@ class PaizaScautCrawler:
         # スカウトメッセージの数
         sum_message_num = int(browser.find_element(By.CLASS_NAME, "ScoutMessagesCountNum").text[:-1])
 
-        scaut_cards = scrollable_form.find_elements(By.CLASS_NAME, "MessageCard")
+        scout_cards = scrollable_form.find_elements(By.CLASS_NAME, "MessageCard")
 
         # 無限ループを防ぐために最大ループ数を決めておく
         loop_count = 0
 
         # スクロール可能な要素を最下部までスクロールする
-        while len(scaut_cards) != sum_message_num and loop_count < self.LOOP_MAX:
+        while len(scout_cards) != sum_message_num and loop_count < self.LOOP_MAX:
             
             # スクロール可能な要素の現在位置を取得する  
             current_position = browser.execute_script('return arguments[0].scrollTop', scrollable_form)
@@ -99,9 +99,9 @@ class PaizaScautCrawler:
             # スクロールした後に読み込みが完了するまで少し待つ
             time.sleep(self.WAIT_TIME)
 
-            scaut_cards = scrollable_form.find_elements(By.CLASS_NAME, "MessageCard")
-            print(sum_message_num, "件中", len(scaut_cards), "件取得")
+            scout_cards = scrollable_form.find_elements(By.CLASS_NAME, "MessageCard")
+            print(sum_message_num, "件中", len(scout_cards), "件取得")
 
             loop_count += 1
 
-        return [card.get_attribute('innerHTML') for card in scaut_cards]
+        return [card.get_attribute('innerHTML') for card in scout_cards]

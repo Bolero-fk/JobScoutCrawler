@@ -1,15 +1,15 @@
 from bs4 import BeautifulSoup
-from scaut import Scaut
+from scout import Scout
 
-class MynaviScautParser:
-    def parse_scaut(scaut_html):
-        soup = BeautifulSoup(scaut_html, "html.parser")
+class MynaviScoutParser:
+    def parse_scout(scout_html):
+        soup = BeautifulSoup(scout_html, "html.parser")
 
         # 会社名を取得する
         company_name = soup.find('div', class_='job_description_company').text.strip()
 
         # 会社説明を取得する
-        description = MynaviScautParser.get_company_description(soup)
+        description = MynaviScoutParser.get_company_description(soup)
 
         # 年収を取得する
         salary = soup.find('div', class_='job_description_salary').text.strip()
@@ -18,11 +18,11 @@ class MynaviScautParser:
         location = soup.find('div', class_='job_description_location').text.strip().replace('●', '').replace('\n', ' ')
 
         # 年収から最小値と最大値を取得する
-        min_salary, max_salary = MynaviScautParser.get_min_max_salary(salary)
+        min_salary, max_salary = MynaviScoutParser.get_min_max_salary(salary)
 
-        scaut = Scaut(company_name=company_name, min_salary=min_salary, max_salary=max_salary, location=location, description=description, site_name="mynavi")
+        scout = Scout(company_name=company_name, min_salary=min_salary, max_salary=max_salary, location=location, description=description, site_name="mynavi")
         
-        return scaut
+        return scout
     
     def get_min_max_salary(salary_str):
         # 不要な単位を削除する

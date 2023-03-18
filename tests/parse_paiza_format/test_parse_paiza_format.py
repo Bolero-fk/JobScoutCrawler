@@ -4,11 +4,11 @@ import os
 import json
 file_path = os.path.abspath(os.path.dirname(__file__))
 sys.path.append(file_path + "/../..")
-from paiza_scaut_parser import PaizaScautParser
+from paiza_scout_parser import PaizaScoutParser
 
-class TestParsePaizaScaut(unittest.TestCase):
+class TestParsePaizaScout(unittest.TestCase):
     
-    def test_parse_paiza_scaut(self):
+    def test_parse_paiza_scout(self):
         directory = file_path + "/test_case"
         file_names = os.listdir(directory)
         in_files = [file_name for file_name in file_names if file_name.endswith(".in")]
@@ -18,11 +18,11 @@ class TestParsePaizaScaut(unittest.TestCase):
             with open(file_path + "/test_case/" + test_name + '.in', 'r') as f:
                 input = f.read()
 
-            scaut = PaizaScautParser.parse_scaut(input)
+            scout = PaizaScoutParser.parse_scout(input)
 
             with open(file_path + "/test_case/" + test_name + '.out', 'r') as f:
                 expected_output =  json.loads(f.read())
-            self.assertEqual(scaut.to_dict(), expected_output)
+            self.assertEqual(scout.to_dict(), expected_output)
 
 if __name__ == '__main__':
     unittest.main()

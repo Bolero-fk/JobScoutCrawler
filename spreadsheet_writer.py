@@ -1,7 +1,7 @@
 import gspread
 import os
-from paiza_scaut_parser import PaizaScautParser
-from mynavi_scaut_parser import MynaviScautParser
+from paiza_scout_parser import PaizaScoutParser
+from mynavi_scout_parser import MynaviScoutParser
 
 class SpreadsheetWriter:
 
@@ -26,26 +26,26 @@ class SpreadsheetWriter:
             "取得サイト"
         ])
     
-    def is_unique(self, scaut, all_data):
+    def is_unique(self, scout, all_data):
 
-        if any(data.get("会社名") == scaut.company_name and
-            data.get("提示最低年収") == scaut.min_salary and
-            data.get("提示最高年収") == scaut.max_salary and
-            data.get("取得サイト") == scaut.site_name
+        if any(data.get("会社名") == scout.company_name and
+            data.get("提示最低年収") == scout.min_salary and
+            data.get("提示最高年収") == scout.max_salary and
+            data.get("取得サイト") == scout.site_name
             for data in all_data):
             return False
 
         return True
     
-    def write_scauts(self, scauts):
+    def write_scouts(self, scouts):
         # 既存のデータとの重複を避けるため、挿入するデータが既に存在するかどうかをチェックする
         existing_data = self.worksheet.get_all_records()
 
         add_datas = []
 
-        for scaut in scauts:
-            if self.is_unique(scaut, existing_data):
-                add_data = scaut.to_dict()
+        for scout in scouts:
+            if self.is_unique(scout, existing_data):
+                add_data = scout.to_dict()
                 add_datas.append(add_data)
 
         if add_datas:

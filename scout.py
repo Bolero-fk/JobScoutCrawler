@@ -1,6 +1,6 @@
 import json
 
-class Scaut:
+class Scout:
 
     def __init__(self, company_name = "- - -", min_salary = "- - -", max_salary = "- - -", location = "- - -", using_lang = "- - -", description = "- - -", recieve_date = "- - -", remaining_days = "- - -", site_name = "---"):
 
@@ -15,7 +15,7 @@ class Scaut:
         self.site_name = site_name
 
     def to_dict(self):
-        scaut = {
+        scout = {
                     'company_name': self.company_name,
                     'min_salary': self.min_salary, 
                     'max_salary': self.max_salary, 
@@ -27,7 +27,7 @@ class Scaut:
                     'site_name': self.site_name
                 }
         
-        return scaut
+        return scout
 
 
     def to_json(self):

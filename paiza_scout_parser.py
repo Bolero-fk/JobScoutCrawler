@@ -1,9 +1,9 @@
 from bs4 import BeautifulSoup
-from scaut import Scaut
+from scout import Scout
 
-class PaizaScautParser:
-    def parse_scaut(scaut_html):
-        soup = BeautifulSoup(scaut_html, "html.parser")
+class PaizaScoutParser:
+    def parse_scout(scout_html):
+        soup = BeautifulSoup(scout_html, "html.parser")
 
         # 会社名を取得する
         company_name = soup.find('div', class_='MessageCardTitleName').text.strip()
@@ -27,14 +27,14 @@ class PaizaScautParser:
         remaining_days = soup.find('div', class_='MessageCardDate').select("span")[1].text.strip()
 
         # 年収から最小値と最大値を取得する
-        min_salary, max_salary = PaizaScautParser.get_min_max_salary(salary)
+        min_salary, max_salary = PaizaScoutParser.get_min_max_salary(salary)
 
         # 返信期限を数値に変換する
-        remaining_days = PaizaScautParser.get_remaining_days(remaining_days)
+        remaining_days = PaizaScoutParser.get_remaining_days(remaining_days)
 
-        scaut = Scaut(company_name = company_name, min_salary = min_salary, max_salary = max_salary, location = location, using_lang = using_lang, description = description, recieve_date = recieve_date, remaining_days = remaining_days, site_name = "paiza")
+        scout = Scout(company_name = company_name, min_salary = min_salary, max_salary = max_salary, location = location, using_lang = using_lang, description = description, recieve_date = recieve_date, remaining_days = remaining_days, site_name = "paiza")
 
-        return scaut
+        return scout
     
     def get_min_max_salary(salary_str):
         # 不要な単位を削除する

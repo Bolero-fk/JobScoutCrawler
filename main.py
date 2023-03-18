@@ -1,16 +1,16 @@
-from paiza_scaut_crawler import PaizaScautCrawler
-from mynavi_scaut_crawler import MynaviScautCrawler
+from paiza_scout_crawler import PaizaScoutCrawler
+from mynavi_scout_crawler import MynaviScoutCrawler
 from spreadsheet_writer import SpreadsheetWriter
 
 def main():
 
-    paiza_scaut_crawler = PaizaScautCrawler()
-    paiza_scauts = paiza_scaut_crawler.get_scauts()
+    paiza_scout_crawler = PaizaScoutCrawler()
+    paiza_scouts = paiza_scout_crawler.get_scouts()
     
-    mynavi_scaut_crawler = MynaviScautCrawler()
-    mynavi_scauts = mynavi_scaut_crawler.get_scauts()
+    mynavi_scout_crawler = MynaviScoutCrawler()
+    mynavi_scouts = mynavi_scout_crawler.get_scouts()
 
-    scauts = paiza_scauts + mynavi_scauts
+    scouts = paiza_scouts + mynavi_scouts
 
     """
     directory = "./tests/parse_paiza_format/test_case/"
@@ -18,12 +18,12 @@ def main():
     in_files = [file_name for file_name in file_names if file_name.endswith(".in")]
     test_names = [file_name[:-3] for file_name in in_files]
 
-    scauts = []
+    scouts = []
     for test_name in test_names:            
         with open(directory + test_name + '.in', 'r') as f:
             input = f.read()
 
-        scauts.append(PaizaScautParser.parse_scaut(input))
+        scouts.append(PaizaScoutParser.parse_scout(input))
 
     directory = "./tests/parse_mynavi_format/test_case/"
     file_names = os.listdir(directory)
@@ -33,11 +33,11 @@ def main():
     for test_name in test_names:            
         with open(directory + test_name + '.in', 'r') as f:
             input = f.read()
-        scauts.append(MynaviScautParser.parse_scaut(input))
+        scouts.append(MynaviScoutParser.parse_scout(input))
     """
 
     spreadsheet_writer = SpreadsheetWriter("JobScout")
-    spreadsheet_writer.write_scauts(scauts)
+    spreadsheet_writer.write_scouts(scouts)
 
 if __name__ == '__main__':
     main()
