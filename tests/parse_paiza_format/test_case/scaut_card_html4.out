@@ -1,1 +1,1 @@
-{"company_name": "PQRコンサルティング株式会社", "description": "テスト説明4テスト説明4テスト説明4テスト説明4", "min_salary": 200, "max_salary": 500, "location": "神奈川県", "using_lang": "C C++ C#", "recieve_date": "2023/04/25", "remaining_days": 13}
+{"company_name": "PQRコンサルティング株式会社", "min_salary": 200, "max_salary": 500, "location": "神奈川県", "using_lang": "C C++ C#", "description": "テスト説明4テスト説明4テスト説明4テスト説明4", "recieve_date": "2023/04/25", "remaining_days": 13, "site_name": "paiza"}

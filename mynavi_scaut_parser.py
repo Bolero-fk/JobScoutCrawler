@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+from scaut import Scaut
 
 class MynaviScautParser:
     def parse_scaut(scaut_html):
@@ -18,15 +19,9 @@ class MynaviScautParser:
 
         # 年収から最小値と最大値を取得する
         min_salary, max_salary = MynaviScautParser.get_min_max_salary(salary)
-        
-        scaut = {
-            'company_name': company_name,
-            'description': description, 
-            'min_salary': min_salary, 
-            'max_salary': max_salary, 
-            'location': location
-        }
 
+        scaut = Scaut(company_name=company_name, min_salary=min_salary, max_salary=max_salary, location=location, description=description, site_name="mynavi")
+        
         return scaut
     
     def get_min_max_salary(salary_str):

@@ -5,17 +5,13 @@ from mynavi_scaut_parser import MynaviScautParser
 
 def main():
 
-    """
     paiza_scaut_crawler = PaizaScautCrawler()
-    scauts = paiza_scaut_crawler.get_scauts()
+    paiza_scauts = paiza_scaut_crawler.get_scauts()
+
     """
-
     mynavi_scaut_crawler = MynaviScautCrawler()
-    scauts = mynavi_scaut_crawler.get_scauts()
-
-    
-    for scaut in scauts:
-        print(MynaviScautParser.parse_scaut(scaut))
+    mynavi_scauts = mynavi_scaut_crawler.get_scauts()
+    """
 
 if __name__ == '__main__':
     main()

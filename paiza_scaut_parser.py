@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+from scaut import Scaut
 
 class PaizaScautParser:
     def parse_scaut(scaut_html):
@@ -31,16 +32,7 @@ class PaizaScautParser:
         # 返信期限を数値に変換する
         remaining_days = PaizaScautParser.get_remaining_days(remaining_days)
 
-        scaut = {
-            'company_name': company_name,
-            'description': description, 
-            'min_salary': min_salary, 
-            'max_salary': max_salary, 
-            'location': location, 
-            'using_lang': using_lang, 
-            'recieve_date': recieve_date, 
-            'remaining_days': remaining_days
-        }
+        scaut = Scaut(company_name = company_name, min_salary = min_salary, max_salary = max_salary, location = location, using_lang = using_lang, description = description, recieve_date = recieve_date, remaining_days = remaining_days, site_name = "paiza")
 
         return scaut
     
