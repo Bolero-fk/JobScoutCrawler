@@ -1,14 +1,12 @@
 from paiza_scaut_crawler import PaizaScautCrawler
 from mynavi_scaut_crawler import MynaviScautCrawler
-from mynavi_scaut_parser import MynaviScautParser
 from spreadsheet_writer import SpreadsheetWriter
-import os
 
 def main():
 
     paiza_scaut_crawler = PaizaScautCrawler()
     paiza_scauts = paiza_scaut_crawler.get_scauts()
-
+    
     mynavi_scaut_crawler = MynaviScautCrawler()
     mynavi_scauts = mynavi_scaut_crawler.get_scauts()
 
