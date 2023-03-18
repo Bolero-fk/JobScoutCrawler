@@ -1,1 +1,1 @@
-{"company_name": "株式会社あいうえお", "min_salary": null, "max_salary": null, "location": "福岡県", "using_lang": "- - -", "description": "サンプル説明文6サンプル説明文6サンプル説明文6サンプル説明文6サンプル説明文6サンプル説明文6", "recieve_date": "2023/03/09", "remaining_days": 6, "site_name": "paiza"}
+{"company_name": "株式会社あいうえお", "min_salary": "- - -", "max_salary": "- - -", "location": "福岡県", "using_lang": "- - -", "description": "サンプル説明文6サンプル説明文6サンプル説明文6サンプル説明文6サンプル説明文6サンプル説明文6", "recieve_date": "2023/03/09", "remaining_days": 6, "site_name": "paiza"}
