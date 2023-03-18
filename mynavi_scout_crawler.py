@@ -13,7 +13,7 @@ class MynaviScoutCrawler:
     LOGIN_URL = "https://mynavi-job20s.jp/mypage/auth/login"
     MAX_FETCH_SCOUT_NUM = 50
     WAIT_TIME = 2
-    IMPLICITLY_WAIT_TIME = 10
+    IMPLICITLY_WAIT_TIME = 60
 
     def __init__(self):
         pass
