@@ -45,21 +45,21 @@ class PaizaScautParser:
 
         # 値が取得できなかった時
         if(len(salary_range) == 0 or len(salary_range) > 2):
-            return None, None
+            return "- - -", "- - -"
 
         # 最小値が存在する場合は取得する
         try:
             min_salary = int(salary_range[0])
         except:
             # 存在しない場合はNoneを設定する
-            min_salary = None
+            min_salary = "- - -"
 
         # 最大値が存在する場合は取得する
         try:
             max_salary = int(salary_range[1])
         except:
             # 存在しない場合はNoneを設定する
-            max_salary = None
+            max_salary = "- - -"
         
         return min_salary, max_salary
 

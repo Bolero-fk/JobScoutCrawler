@@ -4,6 +4,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
+from paiza_scaut_parser import PaizaScautParser
 from account import Account
 
 class PaizaScautCrawler:
@@ -21,7 +22,7 @@ class PaizaScautCrawler:
         finally:
             browser.quit()
 
-        return scauts
+        return [PaizaScautParser.parse_scaut(scaut) for scaut in scauts]
     
     def initialize_browser(self):
         options = webdriver.ChromeOptions()

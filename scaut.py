@@ -2,7 +2,7 @@ import json
 
 class Scaut:
 
-    def __init__(self, company_name = None, min_salary = None, max_salary = None, location = None, using_lang = None, description = None, recieve_date = None, remaining_days = None, site_name = None):
+    def __init__(self, company_name = "- - -", min_salary = "- - -", max_salary = "- - -", location = "- - -", using_lang = "- - -", description = "- - -", recieve_date = "- - -", remaining_days = "- - -", site_name = "---"):
 
         self.company_name = company_name
         self.min_salary = min_salary 
