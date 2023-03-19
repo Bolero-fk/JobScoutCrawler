@@ -35,6 +35,10 @@ class SpreadsheetWriter:
         return True
     
     def write_scouts(self, scouts):
+        
+        if(len(self.worksheet.get_all_values()) == 0):
+            self.write_header()
+
         # 既存のデータとの重複を避けるため、挿入するデータが既に存在するかどうかをチェックする
         existing_data = self.worksheet.get_all_records()
 
