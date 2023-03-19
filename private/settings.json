@@ -1,6 +1,6 @@
 {
-    "load_paiza": false,
-    "load_mynavi": false,
+    "load_paiza": true,
+    "load_mynavi": true,
     "spread_sheet_name": "JobScout",
     "work_sheet_name": "シート1"
 }
