@@ -2,7 +2,7 @@ import json
 
 class Scout:
 
-    def __init__(self, company_name = "- - -", min_salary = "- - -", max_salary = "- - -", location = "- - -", using_lang = "- - -", description = "- - -", recieve_date = "- - -", remaining_days = "- - -", site_name = "---"):
+    def __init__(self, company_name = "- - -", min_salary = "- - -", max_salary = "- - -", location = "- - -", using_lang = "- - -", description = "- - -", recieve_date = "- - -", limit_day = "- - -", site_name = "---"):
 
         self.company_name = company_name
         self.min_salary = min_salary 
@@ -11,7 +11,7 @@ class Scout:
         self.using_lang = using_lang
         self.description = description
         self.recieve_date = recieve_date
-        self.remaining_days = remaining_days
+        self.limit_day = limit_day
         self.site_name = site_name
 
     def to_dict(self):
@@ -23,7 +23,7 @@ class Scout:
                     'using_lang': self.using_lang, 
                     'description': self.description, 
                     'recieve_date': self.recieve_date, 
-                    'remaining_days': self.remaining_days,
+                    'remaining_days': self.limit_day,
                     'site_name': self.site_name
                 }
         

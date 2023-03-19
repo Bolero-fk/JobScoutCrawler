@@ -1,5 +1,7 @@
 from bs4 import BeautifulSoup
 from scout import Scout
+import datetime
+import pytz
 
 class PaizaScoutParser:
     def parse_scout(scout_html):
@@ -31,8 +33,9 @@ class PaizaScoutParser:
 
         # 返信期限を数値に変換する
         remaining_days = PaizaScoutParser.get_remaining_days(remaining_days)
+        limit_day = PaizaScoutParser.get_limit_day(remaining_days)
 
-        scout = Scout(company_name = company_name, min_salary = min_salary, max_salary = max_salary, location = location, using_lang = using_lang, description = description, recieve_date = recieve_date, remaining_days = remaining_days, site_name = "paiza")
+        scout = Scout(company_name = company_name, min_salary = min_salary, max_salary = max_salary, location = location, using_lang = using_lang, description = description, recieve_date = recieve_date, limit_day = limit_day, site_name = "paiza")
 
         return scout
     
@@ -69,7 +72,19 @@ class PaizaScoutParser:
             return 1
         
         # 残り日数を取得する
-        remaining_days_str = remaining_days_str.replace('残り', '')
-        remaining_days_str = remaining_days_str.replace('日', '')
+        remaining_days_str = remaining_days_str.replace('残り', '').replace('日', '')
 
         return int(remaining_days_str)
+    
+    def get_limit_day(remaining_days):
+        # 今日の日付を取得
+        today = datetime.date.today()
+        
+        # n日後の日付を計算
+        limit_day = today + datetime.timedelta(days=remaining_days)
+        
+        # 日本のタイムゾーンを適用した日付を取得
+        limit_day = pytz.timezone('Asia/Tokyo').localize(datetime.datetime.combine(limit_day, datetime.datetime.min.time()))
+
+        # 日付を文字列に変換して返す
+        return limit_day.strftime('%Y/%m/%d')
