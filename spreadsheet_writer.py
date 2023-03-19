@@ -1,7 +1,4 @@
 import gspread
-import os
-from paiza_scout_parser import PaizaScoutParser
-from mynavi_scout_parser import MynaviScoutParser
 
 class SpreadsheetWriter:
 
