@@ -2,12 +2,12 @@ import gspread
 
 class SpreadsheetWriter:
 
-    def __init__(self, sheet_name):
+    def __init__(self, spread_sheet_name, work_sheet_name):
         gc = gspread.service_account(filename="./private/gspread_credentials.json")
-        sh = gc.open(sheet_name)
+        sh = gc.open(spread_sheet_name)
 
         # スプレッドシートから既存のデータを取得する
-        self.worksheet = sh.worksheet('シート1')
+        self.worksheet = sh.worksheet(work_sheet_name)
 
     def write_header(self):
         self.worksheet.append_row([
