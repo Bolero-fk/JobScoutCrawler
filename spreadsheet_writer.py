@@ -1,9 +1,11 @@
 import gspread
+import os
 
 class SpreadsheetWriter:
 
     def __init__(self, spread_sheet_name, work_sheet_name):
-        gc = gspread.service_account(filename="./private/gspread_credentials.json")
+        file_path = os.path.abspath(os.path.dirname(__file__))
+        gc = gspread.service_account(filename=file_path + "/private/gspread_credentials.json")
         sh = gc.open(spread_sheet_name)
 
         # スプレッドシートから既存のデータを取得する
@@ -53,3 +55,4 @@ class SpreadsheetWriter:
             next_id = len(existing_data) + 1
             add_rows = [[next_id + i, *data.values()] for i, data in enumerate(add_datas)]
             self.worksheet.append_rows(add_rows)
+        
