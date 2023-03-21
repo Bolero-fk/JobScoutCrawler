@@ -23,11 +23,11 @@ class TestParsePaizaScout(unittest.TestCase):
             with open(file_path + "/test_case/" + test_name + '.out', 'r') as f:
                 expected_output =  json.loads(f.read())
 
-            # remaining_daysは実行時の日時によって変わるのでそれぞれの結果からremaining_daysを除外した辞書を作成する
-            output_without_remaining_days = {k: v for k, v in scout.to_dict().items() if k not in  ["remaining_days"]}
-            expected_output_without_remaining_days = {k: v for k, v in expected_output.items() if k not in  ["remaining_days"]}
+            # limit_dayは実行時の日時によって変わるのでそれぞれの結果からlimit_dayを除外した辞書を作成する
+            output_without_limit_day = {k: v for k, v in scout.to_dict().items() if k not in  ["limit_day"]}
+            expected_output_without_limit_day = {k: v for k, v in expected_output.items() if k not in  ["limit_day"]}
 
-            self.assertEqual(output_without_remaining_days, expected_output_without_remaining_days)
+            self.assertEqual(output_without_limit_day, expected_output_without_limit_day)
 
 if __name__ == '__main__':
     unittest.main()

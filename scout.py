@@ -23,7 +23,7 @@ class Scout:
                     'using_lang': self.using_lang, 
                     'description': self.description, 
                     'recieve_date': self.recieve_date, 
-                    'remaining_days': self.limit_day,
+                    'limit_day': self.limit_day,
                     'site_name': self.site_name
                 }
         

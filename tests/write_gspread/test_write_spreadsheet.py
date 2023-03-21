@@ -26,7 +26,7 @@ class TestWriteSpreadsheet(unittest.TestCase):
                     scout_json['using_lang'], 
                     scout_json['description'], 
                     scout_json['recieve_date'], 
-                    scout_json['remaining_days'],
+                    scout_json['limit_day'],
                     scout_json['site_name']) for scout_json in scouts_json]
 
 

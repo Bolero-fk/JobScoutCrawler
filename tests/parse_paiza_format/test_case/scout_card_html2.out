@@ -1,1 +1,1 @@
-{"company_name": "ABC商事株式会社", "min_salary": 250, "max_salary": 600, "location": "大阪府", "using_lang": "Java", "description": "テスト説明2テスト説明2テスト説明2テスト説明2", "recieve_date": "2023/02/12", "remaining_days": 22, "site_name": "paiza"}
+{"company_name": "ABC商事株式会社", "min_salary": 250, "max_salary": 600, "location": "大阪府", "using_lang": "Java", "description": "テスト説明2テスト説明2テスト説明2テスト説明2", "recieve_date": "2023/02/12", "limit_day": 22, "site_name": "paiza"}

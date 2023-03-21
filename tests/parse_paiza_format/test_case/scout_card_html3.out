@@ -1,1 +1,1 @@
-{"company_name": "123サービス株式会社", "min_salary": 280, "max_salary": "- - -", "location": "北海道", "using_lang": "Ruby JavaScript", "description": "テスト説明3テスト説明3テスト説明3テスト説明3", "recieve_date": "2023/01/10", "remaining_days": 24, "site_name": "paiza"}
+{"company_name": "123サービス株式会社", "min_salary": 280, "max_salary": "- - -", "location": "北海道", "using_lang": "Ruby JavaScript", "description": "テスト説明3テスト説明3テスト説明3テスト説明3", "recieve_date": "2023/01/10", "limit_day": 24, "site_name": "paiza"}
